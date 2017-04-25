@@ -29,7 +29,7 @@ import javax.swing.JButton;
 public class TelaCadastro extends JFrame {
 	
 	private JPanel contentPane;	
-	private static ListaContribuintes lista_contribuintes;
+	private ListaContribuintes lista_contribuintes;
 	private JTextField textFieldNome;
 	private JTextField textFieldCpf;
 	private JTextField textFieldIdade;
@@ -37,27 +37,12 @@ public class TelaCadastro extends JFrame {
 	private JTextField textFieldContribuicaoOficial;
 	private JTextField textFieldTotalRendimentos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastro frame = new TelaCadastro(lista_contribuintes);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public TelaCadastro(ListaContribuintes lista_contribuintes) {
-		this.lista_contribuintes = lista_contribuintes;
+	public TelaCadastro(ListaContribuintes lista) {
+		lista_contribuintes = lista;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

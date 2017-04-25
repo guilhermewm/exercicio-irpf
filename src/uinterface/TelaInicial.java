@@ -60,6 +60,12 @@ public class TelaInicial extends JFrame {
 		});
 		
 		JButton btnCalculoImposto = new JButton("Calculo do Imposto");
+		btnCalculoImposto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaConsultaImposto tela_imposto = new TelaConsultaImposto(lista_contribuintes);
+				tela_imposto.setVisible(true);
+			}			
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
