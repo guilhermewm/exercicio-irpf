@@ -3,6 +3,8 @@ package business;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.control.TreeTableRow;
+
 public class ListaContribuintes {
 	private Map<String, Pessoa> lista_contribuintes;
 	
@@ -11,7 +13,11 @@ public class ListaContribuintes {
 	}
 	
 	public void addContribuinte(Pessoa pessoa){
-		lista_contribuintes.put(pessoa.getCpf(), pessoa);
+		if(pessoa.getCpf().isEmpty() || pessoa.getNome().isEmpty() || pessoa.getRendimento() < 0.0 || pessoa.getContribuicao_previdencia() < 0.0){
+			throw new IllegalArgumentException("Faltam campos a serem preenchidos");
+		}else{
+			lista_contribuintes.put(pessoa.getCpf(), pessoa);
+		}		
 	}
 	
 	public Map getTodosOsContribuintes(){

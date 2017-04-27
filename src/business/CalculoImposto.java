@@ -11,6 +11,7 @@ public class CalculoImposto {
 
 
 	public double calculaImposto(String cpf){
+		
 		if(lista.getContribuintePorCpf(cpf).getDeclaracao().equals(TipoDeclaracao.SIMPLES)){
 			System.out.println("simples");
 			return calculoDeclaracaoSimplificada(cpf);
