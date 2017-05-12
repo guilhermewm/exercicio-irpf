@@ -7,8 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import business.CalculoImposto;
+import business.CalculoIrpfFactory;
 import business.ListaContribuintes;
+import business.Pessoa;
+
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -23,7 +25,6 @@ public class TelaConsultaImposto extends JFrame {
 	private JPanel contentPane;
 	private ListaContribuintes lista_contribuintes;
 	private JTextField textFieldCpf;
-	private CalculoImposto calculo_imposto;
 	
 
 
@@ -34,7 +35,6 @@ public class TelaConsultaImposto extends JFrame {
 	 */
 	public TelaConsultaImposto(ListaContribuintes lista) {
 		lista_contribuintes = lista; 
-		calculo_imposto = new CalculoImposto(lista);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,7 +53,12 @@ public class TelaConsultaImposto extends JFrame {
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cpf = textFieldCpf.getText();
-				labelResultadoImposto.setText(String.valueOf(calculo_imposto.calculaImposto(cpf)));				
+				Pessoa contribuinte = lista_contribuintes.getContribuintePorCpf(cpf);
+				
+				double resultado = CalculoIrpfFactory.getInstance().createInstance(contribuinte).calculaImposto(contribuinte);
+								
+				
+				labelResultadoImposto.setText(String.valueOf(resultado));				
 			}
 		});
 		
